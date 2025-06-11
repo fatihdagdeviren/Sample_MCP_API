@@ -1,27 +1,26 @@
-from http.client import HTTPException
-import requests
 from fastapi import APIRouter, Depends
 from dependency_injector.wiring import inject, Provide
 
-from models.mcp_request import MCPRequest
 from src.container import MCPContainer
 
-from src.models.tool_request import ToolRequest
+from src.models.codel_request import CodeRequest
 from tools.code_analysis_tool import CodeAnalysisTool
+from tools.code_docstring_tool import CodeDocstringTool
 
 router = APIRouter()
 
-@router.post("/run-tool", operation_id = "run-tool")
+@router.post("/code-review", operation_id = "code-review")
 @inject
-async def run_tool(
-    request: ToolRequest,
+async def code_review(
+    request: CodeRequest,
     code_analysis_tool: CodeAnalysisTool = Depends(Provide[MCPContainer.code_analysis_tool])
 ):
-
-    # Tool'u çağır (__call__ üzerinden)
     result = await code_analysis_tool(**request.parameters)
     return {"result": result}
 
-@router.get("/call-mcp", operation_id = "call-mcp")
-def call_mcp(req: MCPRequest):
-    return req
+@router.post("/code-docstring", operation_id = "code-docstring")
+@inject
+async def code_docstring(req: CodeRequest,
+             code_docstring_tool : CodeDocstringTool = Depends(Provide[MCPContainer.code_docstring_tool])):
+    result = await code_docstring_tool(**req.parameters)
+    return {"result": result}

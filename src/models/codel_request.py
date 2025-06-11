@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
 
-class ToolRequest(BaseModel):
-    tool_name: str
+class CodeRequest(BaseModel):
     parameters: dict

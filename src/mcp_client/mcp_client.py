@@ -41,6 +41,12 @@ class FastApiMCPDiscoveryClient:
         path_item = openapi.get("paths", {}).get(path, {})
         return path_item
 
+    def call_tool(self, path: str, parameters: dict):
+        """Belirtilen tool'u verilen parametrelerle çağırır."""
+        response = self.client.post(path, json=parameters)
+        response.raise_for_status()
+        return response.json()
+
     def close(self):
         self.client.close()
 

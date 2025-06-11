@@ -32,6 +32,13 @@ app = FastAPI(
         version="1.0.0",
         lifespan=lifespan
     )
+#
+# # # Define your endpoints as you normally would
+# @app.get("/items2",operation_id= "get_item2")
+# async def read_item(item_id: int):
+#     return {"item_id": item_id, "name": f"Item {item_id}"}
+
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=9000, reload=False)
