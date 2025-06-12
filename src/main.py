@@ -6,7 +6,7 @@ from src.container import MCPContainer
 from fastapi_mcp import FastApiMCP
 
 @asynccontextmanager
-async  def lifespan(my_app : FastAPI):
+async  def lifespan(app : FastAPI):
     print("Starting")
     container = MCPContainer()
     # # Dependency Injector
