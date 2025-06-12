@@ -18,10 +18,9 @@ The project is enhanced with dependency injection, code analysis tools, and cust
 - Uvicorn
 - Dependency Injection (Custom Container Design)
 
----
+## 📂 Project Structure
 
-📂 Project Structure
-
+```bash
 Sample_MCP_API/
 │
 ├── src/
@@ -37,7 +36,7 @@ Sample_MCP_API/
 ├── requirements.txt              # Project dependencies
 └── README.txt                    # Documentation file
 
----
+```
 
 ⚙️ Installation Guide
 
@@ -46,7 +45,7 @@ Sample_MCP_API/
 ```bash
 git clone https://github.com/fatihdagdeviren/Sample_MCP_API.git
 cd Sample_MCP_API
-```
+
 
 2️⃣ Create and Activate Virtual Environment
 
